@@ -1,6 +1,6 @@
 # Consulta DNS Online — Argonauts Network Tools
 
-Ferramenta: https://public-ip-dusky.vercel.app/dns/
+Ferramenta: https://publicip.argonauts.com.br/dns/
 
 Consulte registros DNS utilizando o Google Public DNS em formato JSON via HTTPS. O domínio informado é enviado pelo navegador ao resolvedor, e os registros retornados são exibidos na interface.
 

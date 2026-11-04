@@ -3,7 +3,7 @@ import assert from "node:assert/strict";
 import { readFileSync, existsSync } from "node:fs";
 import { resolve } from "node:path";
 const root = resolve(import.meta.dirname, "..");
-const origin = "https://public-ip-dusky.vercel.app";
+const origin = "https://publicip.argonauts.com.br";
 const routes = ["", "dns/", "cidr/", "privacidade/", "guias/"];
 test("all pages keep semantic HTML, unique metadata, canonical, Open Graph and valid JSON-LD", () => {
   const titles = new Set();
@@ -38,13 +38,13 @@ test("sitemap, robots, guides and agent files point to existing resources", () =
     assert.ok(sitemap.includes(`<loc>${origin}/${route}</loc>`));
   assert.match(
     readFileSync(resolve(root, "public/robots.txt"), "utf8"),
-    /Sitemap: https:\/\/public-ip-dusky.vercel.app\/sitemap.xml/,
+    /Sitemap: https:\/\/publicip.argonauts.com.br\/sitemap.xml/,
   );
   for (const file of ["llms.txt", "llms-full.txt"]) {
     const content = readFileSync(resolve(root, "public", file), "utf8");
     assert.ok(content.includes(`${origin}/guias/`));
     for (const [, url] of content.matchAll(
-      /\]\((https:\/\/public-ip-dusky\.vercel\.app\/[^)]*)\)/g,
+      /\]\((https:\/\/publicip\.argonauts\.com\.br\/[^)]*)\)/g,
     )) {
       const path = new URL(url).pathname;
       assert.ok(

@@ -30,7 +30,7 @@ Poppins é global e servida localmente. O logo oficial Argonauts aparece no favi
 
 ## Hospedagem
 
-O domínio configurado no HTML e nos metadados é https://public-ip-dusky.vercel.app/. Confirme que o deploy utiliza este domínio canônico. Na Vercel, configure Vite, comando npm run build, output dist e **não** crie regra SPA fallback que substitua todas as páginas por index.html.
+O domínio configurado no HTML e nos metadados é https://publicip.argonauts.com.br/. Confirme que o deploy utiliza este domínio canônico. Na Vercel, configure Vite, comando npm run build, output dist e **não** crie regra SPA fallback que substitua todas as páginas por index.html.
 
 Antes de mudar de domínio, atualize todos os URLs canônicos e arquivos em public/.
 

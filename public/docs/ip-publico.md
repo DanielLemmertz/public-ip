@@ -1,6 +1,6 @@
 # Qual é meu IP público? — Argonauts Network Tools
 
-URL da ferramenta: https://public-ip-dusky.vercel.app/
+URL da ferramenta: https://publicip.argonauts.com.br/
 
 O site mostra o IPv4 e o IPv6 que os serviços externos da ipify observam quando o navegador realiza uma consulta. É gratuito e não exige cadastro.
 
@@ -16,7 +16,7 @@ Um IP privado, como 192.168.1.20, costuma identificar um dispositivo dentro da r
 
 ## Como utilizar
 
-1. Abra https://public-ip-dusky.vercel.app/.
+1. Abra https://publicip.argonauts.com.br/.
 2. Confira o endereço principal e os campos IPv4/IPv6.
 3. Use o botão ao lado do resultado. Ele copia o protocolo selecionado.
 4. Clique em "Atualizar" para repetir a consulta.
@@ -27,4 +27,4 @@ O IP público não permite identificar por si só um endereço residencial exato
 
 ## Privacidade
 
-A consulta é feita pelo navegador aos endpoints https://api4.ipify.org e https://api6.ipify.org. Leia https://public-ip-dusky.vercel.app/privacidade/.
+A consulta é feita pelo navegador aos endpoints https://api4.ipify.org e https://api6.ipify.org. Leia https://publicip.argonauts.com.br/privacidade/.

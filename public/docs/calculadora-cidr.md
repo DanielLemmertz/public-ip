@@ -1,6 +1,6 @@
 # Calculadora CIDR IPv4 — Argonauts Network Tools
 
-Ferramenta: https://public-ip-dusky.vercel.app/cidr/
+Ferramenta: https://publicip.argonauts.com.br/cidr/
 
 A notação CIDR usa um prefixo para indicar quantos bits de um endereço IPv4 pertencem à rede. Exemplo: 192.168.1.10/24.
 
