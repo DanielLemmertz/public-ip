@@ -65,11 +65,11 @@ test("official logo, favicon and Powered by appear on all five pages", async ({
     await page.goto(path);
     await expect(page.locator(".brand img")).toHaveAttribute(
       "src",
-      "/brands/publicip/logo.png",
+      "/brands/publicip/logo-clean.png",
     );
     await expect(page.locator('link[rel="icon"]')).toHaveAttribute(
       "href",
-      "/brands/publicip/logo.png",
+      "/brands/publicip/logo-clean.png",
     );
     await expect(page.locator(".powered-by")).toContainText("Powered by");
     await expect(page.locator(".powered-by a")).toHaveText(
