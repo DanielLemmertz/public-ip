@@ -1,0 +1,28 @@
+name: Build and tests
+on:
+  push:
+    branches: [main, feature/public-ip-seo-ai-v2]
+  pull_request:
+    branches: [main]
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci
+      - run: npm test
+      - run: npm run build
+      - name: Verify static SEO assets
+        run: |
+          test -f dist/index.html
+          test -f dist/dns/index.html
+          test -f dist/cidr/index.html
+          test -f dist/privacidade/index.html
+          test -f dist/robots.txt
+          test -f dist/sitemap.xml
+          test -f dist/llms.txt
+          test -f dist/llms-full.txt

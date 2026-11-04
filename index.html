@@ -1,13 +1,86 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
-    <title>Argonauts - IP</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#090e18">
+  <meta name="description" content="Descubra seu IP público IPv4 e IPv6 grátis, com um clique para copiar. Acesse também consulta DNS e calculadora CIDR. Ferramentas de rede da Argonauts.">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <title>Qual é meu IP? Descubra seu IP público IPv4 e IPv6 | Argonauts</title>
+  <link rel="canonical" href="https://public-ip-dusky.vercel.app/">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="describedby" type="text/markdown" href="/llms.txt">
+  <link rel="alternate" type="text/markdown" href="/docs/ip-publico.md">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:site_name" content="Argonauts Network Tools">
+  <meta property="og:title" content="Qual é meu IP? IPv4 e IPv6 em segundos">
+  <meta property="og:description" content="Descubra e copie seu IP público. Ferramentas gratuitas de rede, DNS e sub-redes.">
+  <meta property="og:url" content="https://public-ip-dusky.vercel.app/">
+  <meta name="twitter:card" content="summary">
+  <link rel="stylesheet" href="/src/styles.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {"@type":"WebSite","@id":"https://public-ip-dusky.vercel.app/#site","name":"Argonauts Network Tools","url":"https://public-ip-dusky.vercel.app/","inLanguage":"pt-BR","publisher":{"@type":"Organization","name":"Argonauts","url":"https://argonauts.com.br/"}},
+      {"@type":"WebApplication","@id":"https://public-ip-dusky.vercel.app/#app","name":"Qual é meu IP?","url":"https://public-ip-dusky.vercel.app/","description":"Ferramenta gratuita para consultar o endereço IP público IPv4 e IPv6 do visitante.","applicationCategory":"UtilitiesApplication","operatingSystem":"Qualquer sistema com navegador moderno","inLanguage":"pt-BR","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"BRL"}}
+    ]
+  }
+  </script>
+  <script type="module" src="/src/ip.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#conteudo">Pular para conteúdo</a>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="/" aria-label="Argonauts Network Tools - Início"><span class="brand-mark" aria-hidden="true">◈</span><span>argonauts<span class="brand-divider">/</span><strong>network</strong></span></a>
+      <nav class="primary-nav" aria-label="Navegação principal">
+        <a href="/" aria-current="page">Meu IP</a>
+        <a href="/dns/">Consultar DNS</a>
+        <a href="/cidr/">Calculadora CIDR</a>
+      </nav>
+      <a class="header-link" href="https://argonauts.com.br/" target="_blank" rel="noopener noreferrer">Argonauts ↗</a>
+    </div>
+  </header>
+  <main id="conteudo">
+    <section class="hero container" aria-labelledby="titulo">
+      <div class="eyebrow"><span class="live-dot" aria-hidden="true"></span> NETWORK TOOLS <span class="eyebrow-separator">/</span> GRATUITO E SEM CADASTRO</div>
+      <h1 id="titulo">Qual é meu <em>IP público?</em></h1>
+      <p class="hero-description">Descubra o endereço IP que sua conexão apresenta à internet. IPv4 e IPv6 em uma consulta simples, com um clique para copiar.</p>
+      <div class="ip-panel">
+        <div class="panel-top"><span class="label-overline">SEU ENDEREÇO IP</span><span class="panel-state" id="ip-state"><span class="state-indicator"></span> Consultando</span></div>
+        <div class="ip-main" id="primary-ip" aria-live="polite">Consultando sua conexão…</div>
+        <div class="ip-actions">
+          <button id="copy-ip" class="button button-primary" type="button" disabled>Copiar IP <span aria-hidden="true">↗</span></button>
+          <button id="refresh-ip" class="button button-muted" type="button">Atualizar <span aria-hidden="true">↻</span></button>
+        </div>
+        <p class="helper" id="ip-feedback" role="status" aria-live="polite">A consulta ocorre diretamente no seu navegador.</p>
+        <div class="ip-detail-grid" aria-label="Endereços por protocolo">
+          <div class="ip-detail"><div class="detail-heading"><span>IPv4</span><span class="protocol-pill">32 bits</span></div><output id="ipv4" class="mono">Consultando…</output><button id="copy-ipv4" type="button" class="text-button" disabled>Copiar IPv4</button></div>
+          <div class="ip-detail"><div class="detail-heading"><span>IPv6</span><span class="protocol-pill">128 bits</span></div><output id="ipv6" class="mono">Consultando…</output><button id="copy-ipv6" type="button" class="text-button" disabled>Copiar IPv6</button></div>
+        </div>
+      </div>
+      <p class="hero-note">O IP exibido é o endereço público observado pelo serviço de consulta, que pode ser de uma VPN, proxy ou rede compartilhada. Não é seu endereço IP local.</p>
+    </section>
+    <section class="container tools-section" aria-labelledby="ferramentas">
+      <div class="section-heading"><div><span class="label-overline">FERRAMENTAS</span><h2 id="ferramentas">Tudo para entender a sua rede.</h2></div><p>Sem instalação. Informações úteis, explicadas com clareza.</p></div>
+      <div class="tool-grid">
+        <a class="tool-card" href="/dns/"><span class="tool-index">01 / DNS</span><span class="tool-icon" aria-hidden="true">⌁</span><h3>Consulta DNS</h3><p>Consulte registros A, AAAA, MX, TXT, CNAME, NS e mais usando DNS-over-HTTPS.</p><span class="card-link">Abrir ferramenta ↗</span></a>
+        <a class="tool-card" href="/cidr/"><span class="tool-index">02 / SUB-REDES</span><span class="tool-icon" aria-hidden="true">▦</span><h3>Calculadora CIDR</h3><p>Calcule máscara, rede, broadcast e quantidade de endereços IPv4.</p><span class="card-link">Abrir ferramenta ↗</span></a>
+        <a class="tool-card" href="/docs/ip-publico.md"><span class="tool-index">03 / GUIA</span><span class="tool-icon" aria-hidden="true">◉</span><h3>Entenda seu IP</h3><p>Veja a diferença entre IP público, privado, IPv4, IPv6, NAT e VPN.</p><span class="card-link">Ler guia ↗</span></a>
+      </div>
+    </section>
+    <section class="container editorial" aria-labelledby="sobre-ip">
+      <div><span class="label-overline">CONHECIMENTO</span><h2 id="sobre-ip">O que é um IP público?</h2></div>
+      <div class="editorial-body">
+        <p>Um endereço IP público é usado para identificar a origem de uma conexão na internet. Dependendo da operadora, ele pode representar diretamente seu roteador, a saída de uma rede compartilhada ou um serviço de VPN.</p>
+        <h3>IPv4 e IPv6 são diferentes?</h3><p>Sim. IPv4 usa 32 bits, com endereços como 203.0.113.10. IPv6 usa 128 bits, o que permite muito mais endereços. Algumas redes oferecem ambos; outras usam apenas um dos protocolos.</p>
+        <h3>O IP público mostra minha localização exata?</h3><p>Não. Estimativas de localização por IP podem indicar região e provedor, mas não revelam, por si só, o endereço físico exato de uma pessoa.</p>
+        <h3>Meu IP muda?</h3><p>Sim. Operadoras podem atribuir endereços dinâmicos. A conexão também pode sair por IP diferente ao usar VPN, redes móveis ou outras redes Wi-Fi.</p>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer"><div class="container footer-inner"><span>© Argonauts · Ferramentas de rede gratuitas</span><div><a href="/privacidade/">Privacidade</a><a href="/llms.txt">Para IAs</a><a href="https://github.com/DanielLemmertz/public-ip" rel="noopener noreferrer" target="_blank">Código-fonte ↗</a></div></div></footer>
+</body>
 </html>
