@@ -18,7 +18,7 @@ Um IP privado, como 192.168.1.20, costuma identificar um dispositivo dentro da r
 
 1. Abra https://public-ip-dusky.vercel.app/.
 2. Confira o endereço principal e os campos IPv4/IPv6.
-3. Use "Copiar IP" ou copie o protocolo desejado.
+3. Use o botão ao lado do resultado. Ele copia o protocolo selecionado.
 4. Clique em "Atualizar" para repetir a consulta.
 
 ## Limitações

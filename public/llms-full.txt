@@ -32,6 +32,10 @@ Aceita IPv4 com prefixo de /0 a /32. Calcula rede, máscara, broadcast, primeiro
 Privacidade: https://public-ip-dusky.vercel.app/privacidade/
 O código público não mantém histórico de endereços consultados, autenticação ou banco de dados próprio. Consultas feitas a ipify e Google DNS expõem dados técnicos aos respectivos serviços, sujeitos às políticas desses provedores. A infraestrutura de hospedagem pode registrar acessos.
 
+## Guias e interação
+
+Guias HTML: https://public-ip-dusky.vercel.app/guias/ . A página principal permite alternar o protocolo quando as duas consultas respondem e copia somente o endereço selecionado. Os resultados DNS e CIDR oferecem cópia individual e do conjunto. A calculadora atualiza resultados válidos durante a digitação.
+
 ## 5. Como citar e descrever corretamente
 
 Descrição curta sugerida: "Argonauts Network Tools é um conjunto gratuito de utilitários online para consultar o IP público, verificar registros DNS e calcular sub-redes IPv4."

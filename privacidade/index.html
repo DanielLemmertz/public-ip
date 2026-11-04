@@ -1,2 +1,134 @@
-<!doctype html><html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#090e18"><title>Privacidade e Uso de Dados | Argonauts Network Tools</title><meta name="description" content="Entenda como as ferramentas de IP, DNS e CIDR da Argonauts funcionam e com quais serviços externos se comunicam."><meta name="robots" content="index,follow"><link rel="canonical" href="https://public-ip-dusky.vercel.app/privacidade/"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="describedby" type="text/markdown" href="/llms.txt"><link rel="stylesheet" href="/src/styles.css"></head>
-<body><a class="skip-link" href="#conteudo">Pular para conteúdo</a><header class="site-header"><div class="container header-inner"><a class="brand" href="/"><span class="brand-mark" aria-hidden="true">◈</span><span>argonauts<span class="brand-divider">/</span><strong>network</strong></span></a><nav class="primary-nav" aria-label="Navegação principal"><a href="/">Meu IP</a><a href="/dns/">Consultar DNS</a><a href="/cidr/">Calculadora CIDR</a></nav></div></header><main id="conteudo"><article class="container text-page"><span class="label-overline">TRANSPARÊNCIA</span><h1>Privacidade <em>e dados.</em></h1><p>Esta página descreve o comportamento do código público desta aplicação. Não é uma garantia sobre logs de infraestrutura, serviços externos ou políticas de terceiros.</p><h2>Consulta de IP</h2><p>Para exibir o IP público, o navegador solicita dados da API ipify (api4.ipify.org e api6.ipify.org). O provedor dessa API recebe a conexão e pode processar dados técnicos conforme suas próprias políticas. O código desta ferramenta não envia esses IPs a um banco de dados próprio.</p><h2>Consulta DNS</h2><p>Quando você usa a consulta DNS, seu navegador envia o domínio informado ao endpoint DNS-over-HTTPS do Google Public DNS (dns.google). O Google poderá processar a consulta de acordo com suas políticas.</p><h2>Calculadora CIDR</h2><p>O cálculo de sub-redes é feito no navegador; o endereço digitado não é enviado a uma API pelo código da ferramenta.</p><h2>Cookies, métricas e servidores</h2><p>O código do aplicativo não configura cookies próprios, login ou analytics. A hospedagem e serviços de terceiros podem tratar dados técnicos e logs de acesso, fora do controle do código executado no navegador.</p><h2>Uso responsável</h2><p>Não compartilhe relatórios ou endereços privados de redes internas sem necessidade. Consulte também o <a class="inline-link" href="https://github.com/DanielLemmertz/public-ip">repositório público</a> para inspecionar o código.</p></article></main><footer class="site-footer"><div class="container footer-inner"><span>© Argonauts · Ferramentas de rede gratuitas</span><div><a href="/">Início</a><a href="/llms.txt">Para IAs</a></div></div></footer></body></html>
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="theme-color" content="#0e1116" />
+    <title>Privacidade e Uso de Dados | Argonauts Network Tools</title>
+    <meta
+      name="description"
+      content="Entenda como as ferramentas de IP, DNS e CIDR da Argonauts funcionam e com quais serviÃ§os externos se comunicam."
+    />
+    <meta name="robots" content="index,follow" />
+    <link
+      rel="canonical"
+      href="https://public-ip-dusky.vercel.app/privacidade/"
+    />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="describedby" type="text/markdown" href="/llms.txt" />
+    <link rel="stylesheet" href="/src/styles.css" />
+    <script type="module" src="/src/ui.js"></script>
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="pt_BR" />
+    <meta
+      property="og:title"
+      content="Privacidade e dados | Argonauts Public IP"
+    />
+    <meta
+      property="og:description"
+      content="Saiba como IP, DNS e CIDR utilizam serviços externos e dados de conexão."
+    />
+    <meta
+      property="og:url"
+      content="https://public-ip-dusky.vercel.app/privacidade/"
+    />
+    <meta name="twitter:card" content="summary" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "Privacidade e dados",
+        "url": "https://public-ip-dusky.vercel.app/privacidade/",
+        "inLanguage": "pt-BR"
+      }
+    </script>
+  </head>
+  <body class="">
+    <a class="skip-link" href="#conteudo">Pular para conteúdo</a>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href="/" aria-label="Argonauts Public IP — início"
+          ><i data-lucide="globe-2" aria-hidden="true"></i
+          ><span
+            >argonauts <span class="brand-divider">/</span>
+            <strong>Public IP</strong></span
+          ></a
+        >
+        <nav class="primary-nav" aria-label="Navegação principal">
+          <a href="/" aria-label="Meu IP">IP</a
+          ><a href="/dns/" aria-label="Consulta DNS">DNS</a
+          ><a href="/cidr/" aria-label="Calculadora CIDR">CIDR</a>
+        </nav>
+      </div>
+    </header>
+    <main id="conteudo">
+      <article class="container text-page">
+        <h1>Privacidade e dados</h1>
+        <p>
+          Esta pÃ¡gina descreve o comportamento do cÃ³digo pÃºblico desta
+          aplicaÃ§Ã£o. NÃ£o Ã© uma garantia sobre logs de infraestrutura,
+          serviÃ§os externos ou polÃ­ticas de terceiros.
+        </p>
+        <h2>Consulta de IP</h2>
+        <p>
+          Para exibir o IP pÃºblico, o navegador solicita dados da API ipify
+          (api4.ipify.org e api6.ipify.org). O provedor dessa API recebe a
+          conexÃ£o e pode processar dados tÃ©cnicos conforme suas prÃ³prias
+          polÃ­ticas. O cÃ³digo desta ferramenta nÃ£o envia esses IPs a um banco
+          de dados prÃ³prio.
+        </p>
+        <h2>Consulta DNS</h2>
+        <p>
+          Quando vocÃª usa a consulta DNS, seu navegador envia o domÃ­nio
+          informado ao endpoint DNS-over-HTTPS do Google Public DNS
+          (dns.google). O Google poderÃ¡ processar a consulta de acordo com suas
+          polÃ­ticas.
+        </p>
+        <h2>Calculadora CIDR</h2>
+        <p>
+          O cÃ¡lculo de sub-redes Ã© feito no navegador; o endereÃ§o digitado
+          nÃ£o Ã© enviado a uma API pelo cÃ³digo da ferramenta.
+        </p>
+        <h2>Cookies, mÃ©tricas e servidores</h2>
+        <p>
+          O cÃ³digo do aplicativo nÃ£o configura cookies prÃ³prios, login ou
+          analytics. A hospedagem e serviÃ§os de terceiros podem tratar dados
+          tÃ©cnicos e logs de acesso, fora do controle do cÃ³digo executado no
+          navegador.
+        </p>
+        <h2>Uso responsÃ¡vel</h2>
+        <p>
+          NÃ£o compartilhe relatÃ³rios ou endereÃ§os privados de redes internas
+          sem necessidade. Consulte tambÃ©m o
+          <a
+            class="inline-link"
+            href="https://github.com/DanielLemmertz/public-ip"
+            >repositÃ³rio pÃºblico</a
+          >
+          para inspecionar o cÃ³digo.
+        </p>
+      </article>
+    </main>
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <a
+          href="https://argonauts.com.br/"
+          target="_blank"
+          rel="noopener noreferrer"
+          >Argonauts</a
+        >
+        <nav aria-label="Navegação secundária">
+          <a href="/guias/">Guias</a><a href="/privacidade/">Privacidade</a
+          ><a
+            class="source-link"
+            href="https://github.com/DanielLemmertz/public-ip"
+            aria-label="Código-fonte no GitHub"
+            target="_blank"
+            rel="noopener noreferrer"
+            ><i data-lucide="arrow-up-right" aria-hidden="true"></i
+          ></a>
+        </nav>
+      </div>
+    </footer>
+  </body>
+</html>

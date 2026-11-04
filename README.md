@@ -10,13 +10,17 @@ Requer Node.js 22 e npm.
 - `npm run dev`
 - `npm test`
 - `npm run build`
+- `npx playwright install chromium`
+- `npm run test:e2e`
 - `npm run preview`
 
-Build multi-page com Vite. Diretórios públicos: /, /dns/, /cidr/ e /privacidade/. Output: dist.
+Build multi-page com Vite. Diretórios públicos: /, /dns/, /cidr/, /guias/ e /privacidade/. Output: dist.
+
+A Home prioriza o IP, a cópia do protocolo selecionado e os atalhos DNS/CIDR. As consultas de IPv4 e IPv6 são independentes: um resultado pode ser usado sem esperar pelo outro. DNS e CIDR oferecem cópia individual e completa. Entradas CIDR válidas são calculadas durante a digitação. Poppins é servida localmente; os ícones usam apenas os SVGs Lucide importados.
 
 ## SEO e indexação por IA
 
-- Conteúdo editorial HTML retornado diretamente, sem exigir renderização JavaScript.
+- Conteúdo essencial no HTML inicial. Guias e documentação ficam em páginas próprias, sem ocupar a Home.
 - Titles, descriptions, canonical, Open Graph, Twitter meta, JSON-LD WebApplication.
 - Sitemap em /sitemap.xml e instruções em /robots.txt.
 - Documentação para IA em /llms.txt, /llms-full.txt e /docs/*.md.
@@ -34,6 +38,8 @@ A API ipify fornece IPv4/IPv6. Google Public DNS recebe consultas DNS por DNS-ov
 
 ## Testes e validação
 
-Teste unitário de CIDR com Node `--test`; workflow executa testes, build e confirma arquivos SEO no dist. Após publicar, validar Core Web Vitals no mobile, Google Search Console, Bing Webmaster Tools, URLs canonicals, dados estruturados e HTTP 200 de arquivos .txt e .md.
+`npm test` verifica CIDR, entradas DNS, endereços IPv4/IPv6, metadados e links de sitemap/documentação. `npm run test:e2e` exercita os fluxos em Chromium contra o build de produção, com respostas de API controladas e endereços reservados para documentação. As capturas ficam em `docs/qa/screenshots/`.
+
+O workflow executa testes, build e confirma arquivos SEO no dist. Lighthouse, LCP, CLS e INP não foram medidos; os valores citados como metas não são resultados deste trabalho. Após publicar, validar também Google Search Console, Bing Webmaster Tools e respostas HTTP dos recursos estáticos.
 
 O pacote ainda contém dependências do protótipo React. Os novos HTML e scripts não importam React; as dependências podem ser removidas do lockfile num PR posterior.

@@ -24,5 +24,7 @@ As ferramentas funcionam no navegador. A consulta de IP usa ipify e a consulta D
 
 ## Outros recursos
 
+- [Guias de rede](https://public-ip-dusky.vercel.app/guias/)
+
 - [Privacidade](https://public-ip-dusky.vercel.app/privacidade/)
 - [Código-fonte](https://github.com/DanielLemmertz/public-ip)

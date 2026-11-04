@@ -11,6 +11,7 @@ export default defineConfig({
         dns: resolve(import.meta.dirname, "dns/index.html"),
         cidr: resolve(import.meta.dirname, "cidr/index.html"),
         privacy: resolve(import.meta.dirname, "privacidade/index.html"),
+        guides: resolve(import.meta.dirname, "guias/index.html"),
       },
     },
   },

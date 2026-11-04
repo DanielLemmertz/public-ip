@@ -1,35 +1,184 @@
 <!doctype html>
 <html lang="pt-BR">
-<head>
-  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="theme-color" content="#090e18">
-  <title>Consulta DNS Online Grátis: A, AAAA, MX, TXT e NS | Argonauts</title>
-  <meta name="description" content="Consulte registros DNS de qualquer domínio: A, AAAA, MX, TXT, CNAME, NS, SOA e CAA. Ferramenta DNS Lookup gratuita com TTL e retorno DNS.">
-  <meta name="robots" content="index,follow">
-  <link rel="canonical" href="https://public-ip-dusky.vercel.app/dns/">
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-  <link rel="describedby" type="text/markdown" href="/llms.txt">
-  <link rel="alternate" type="text/markdown" href="/docs/consulta-dns.md">
-  <meta property="og:type" content="website"><meta property="og:locale" content="pt_BR"><meta property="og:title" content="Consulta DNS Online Grátis | Argonauts"><meta property="og:description" content="Descubra registros DNS, TTL e respostas do resolvedor para qualquer domínio."><meta property="og:url" content="https://public-ip-dusky.vercel.app/dns/"><meta name="twitter:card" content="summary">
-  <link rel="stylesheet" href="/src/styles.css">
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Consulta DNS Online","url":"https://public-ip-dusky.vercel.app/dns/","applicationCategory":"UtilitiesApplication","operatingSystem":"Navegador moderno","inLanguage":"pt-BR","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"BRL"}}</script>
-  <script type="module" src="/src/dns.js"></script>
-</head>
-<body>
-<a class="skip-link" href="#conteudo">Pular para conteúdo</a>
-<header class="site-header"><div class="container header-inner"><a class="brand" href="/" aria-label="Argonauts Network Tools - Início"><span class="brand-mark" aria-hidden="true">◈</span><span>argonauts<span class="brand-divider">/</span><strong>network</strong></span></a><nav class="primary-nav" aria-label="Navegação principal"><a href="/">Meu IP</a><a href="/dns/" aria-current="page">Consultar DNS</a><a href="/cidr/">Calculadora CIDR</a></nav><a class="header-link" href="https://argonauts.com.br/" target="_blank" rel="noopener noreferrer">Argonauts ↗</a></div></header>
-<main id="conteudo">
-<section class="container tool-hero"><div class="eyebrow"><span class="live-dot" aria-hidden="true"></span> NETWORK TOOLS / 01</div><h1>Consulta <em>DNS online.</em></h1><p class="hero-description">Descubra os registros DNS de um domínio, incluindo endereços IP, servidores de e-mail e TXT. Os resultados vêm do Google Public DNS via HTTPS.</p>
-<div class="workspace">
-  <form id="dns-form" class="form-stack">
-    <div class="form-field"><label for="dns-domain">Domínio para consultar</label><input id="dns-domain" name="domain" type="text" inputmode="url" autocomplete="off" placeholder="exemplo.com" value="google.com" maxlength="253" required aria-describedby="dns-help"><small id="dns-help">Digite somente o domínio, sem https:// nem caminho.</small></div>
-    <div class="form-field"><label for="dns-type">Tipo de registro</label><select id="dns-type" name="type"><option>A</option><option>AAAA</option><option>MX</option><option>TXT</option><option>CNAME</option><option>NS</option><option>SOA</option><option>CAA</option><option>PTR</option></select></div>
-    <button class="button button-primary" type="submit" id="dns-submit">Consultar DNS ↗</button>
-  </form>
-  <div class="results" aria-labelledby="dns-results-heading"><div class="results-header"><h2 id="dns-results-heading">Resultado</h2><span class="protocol-pill" id="dns-count">Aguardando</span></div><p role="status" aria-live="polite" class="helper" id="dns-status">Preencha o domínio e clique em consultar.</p><div class="table-scroll"><table class="data-table"><thead><tr><th>Tipo</th><th>Valor</th><th>TTL</th></tr></thead><tbody id="dns-rows"><tr><td colspan="3" class="empty-result">Os registros encontrados aparecerão aqui.</td></tr></tbody></table></div></div>
-</div>
-</section>
-<section class="container editorial" aria-labelledby="dns-explica"><div><span class="label-overline">GUIA RÁPIDO</span><h2 id="dns-explica">O que significam os registros?</h2></div><div class="editorial-body"><h3>A e AAAA</h3><p>Ligam um nome de domínio a um endereço IPv4 ou IPv6, respectivamente.</p><h3>MX e TXT</h3><p>MX aponta servidores responsáveis por receber e-mails. TXT armazena texto usado, entre outras coisas, em verificações e políticas de e-mail, como SPF e DMARC.</p><h3>CNAME, NS e SOA</h3><p>CNAME cria um alias para outro nome. NS identifica servidores de nomes. SOA contém dados administrativos da zona DNS.</p><h3>O que é TTL?</h3><p>TTL é o tempo, em segundos, que uma resposta DNS pode permanecer em cache. Alterações não aparecem simultaneamente para todos os resolvedores.</p><p><a class="inline-link" href="/docs/consulta-dns.md">Documentação completa da ferramenta →</a></p></div></section>
-</main>
-<footer class="site-footer"><div class="container footer-inner"><span>© Argonauts · Ferramentas de rede gratuitas</span><div><a href="/">Meu IP</a><a href="/privacidade/">Privacidade</a><a href="/llms.txt">Para IAs</a></div></div></footer>
-</body></html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="theme-color" content="#0e1116" />
+    <title>Consulta DNS Online Grátis: A, AAAA, MX, TXT e NS | Argonauts</title>
+    <meta
+      name="description"
+      content="Consulte registros DNS de qualquer domínio: A, AAAA, MX, TXT, CNAME, NS, SOA e CAA. Ferramenta DNS Lookup gratuita com TTL e retorno DNS."
+    />
+    <meta name="robots" content="index,follow" />
+    <link rel="canonical" href="https://public-ip-dusky.vercel.app/dns/" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="describedby" type="text/markdown" href="/llms.txt" />
+    <link rel="alternate" type="text/markdown" href="/docs/consulta-dns.md" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="pt_BR" />
+    <meta
+      property="og:title"
+      content="Consulta DNS Online Grátis | Argonauts"
+    />
+    <meta
+      property="og:description"
+      content="Descubra registros DNS, TTL e respostas do resolvedor para qualquer domínio."
+    />
+    <meta property="og:url" content="https://public-ip-dusky.vercel.app/dns/" />
+    <meta name="twitter:card" content="summary" />
+    <link rel="stylesheet" href="/src/styles.css" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Consulta DNS Online",
+        "url": "https://public-ip-dusky.vercel.app/dns/",
+        "applicationCategory": "UtilitiesApplication",
+        "operatingSystem": "Navegador moderno",
+        "inLanguage": "pt-BR",
+        "isAccessibleForFree": true,
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "BRL" }
+      }
+    </script>
+    <script type="module" src="/src/dns.js"></script>
+  </head>
+  <body class="">
+    <a class="skip-link" href="#conteudo">Pular para conteúdo</a>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href="/" aria-label="Argonauts Public IP — início"
+          ><i data-lucide="globe-2" aria-hidden="true"></i
+          ><span
+            >argonauts <span class="brand-divider">/</span>
+            <strong>Public IP</strong></span
+          ></a
+        >
+        <nav class="primary-nav" aria-label="Navegação principal">
+          <a href="/" aria-label="Meu IP">IP</a
+          ><a href="/dns/" aria-current="page" aria-label="Consulta DNS">DNS</a
+          ><a href="/cidr/" aria-label="Calculadora CIDR">CIDR</a>
+        </nav>
+      </div>
+    </header>
+    <main id="conteudo" class="container tool-main">
+      <h1>Consulta DNS</h1>
+      <form id="dns-form" class="query-form dns-form">
+        <div class="form-field domain-field">
+          <label for="dns-domain">Domínio</label
+          ><input
+            id="dns-domain"
+            name="domain"
+            type="text"
+            inputmode="url"
+            autocomplete="off"
+            autocapitalize="none"
+            spellcheck="false"
+            placeholder="exemplo.com"
+            maxlength="2048"
+            aria-describedby="dns-status"
+            required
+          />
+        </div>
+        <div class="form-field">
+          <label for="dns-type">Registro</label>
+          <div class="select-wrap">
+            <select id="dns-type" name="type">
+              <option>A</option>
+              <option>AAAA</option>
+              <option>MX</option>
+              <option>TXT</option>
+              <option>CNAME</option>
+              <option>NS</option>
+              <option>SOA</option>
+              <option>CAA</option>
+              <option>PTR</option></select
+            ><i data-lucide="chevron-down" aria-hidden="true"></i>
+          </div>
+        </div>
+        <button id="dns-submit" class="button button-primary" type="submit">
+          <i data-lucide="search" aria-hidden="true"></i>Consultar
+        </button>
+      </form>
+      <p
+        id="dns-status"
+        class="status form-status"
+        role="status"
+        aria-live="polite"
+      ></p>
+      <section
+        id="dns-results"
+        class="results"
+        aria-labelledby="dns-results-heading"
+        hidden
+      >
+        <div class="results-header">
+          <h2 id="dns-results-heading">
+            Registros <span id="dns-count" class="result-count"></span>
+          </h2>
+          <button id="copy-dns" class="text-button copy-button" type="button">
+            <span class="icon-default"
+              ><i data-lucide="copy" aria-hidden="true"></i></span
+            ><span class="icon-success"
+              ><i data-lucide="check" aria-hidden="true"></i></span
+            ><span>Copiar tudo</span>
+          </button>
+        </div>
+        <table class="data-table">
+          <caption class="sr-only">
+            Registros DNS retornados, valores e tempo de cache
+          </caption>
+          <colgroup>
+            <col class="type-column" />
+            <col />
+            <col class="action-column" />
+          </colgroup>
+          <thead>
+            <tr>
+              <th scope="col">Tipo</th>
+              <th scope="col">Valor</th>
+              <th scope="col"><span class="sr-only">Copiar</span></th>
+            </tr>
+          </thead>
+          <tbody id="dns-rows"></tbody>
+        </table>
+      </section>
+      <details class="tool-help">
+        <summary>Sobre os registros DNS</summary>
+        <p>
+          A e AAAA apontam endereços IP. MX identifica servidores de e-mail. TXT
+          contém texto e verificações de domínio. TTL · o tempo de cache, em
+          segundos.
+        </p>
+        <p>
+          As respostas vêm do Google Public DNS e podem variar conforme o cache
+          do resolvedor.
+        </p>
+        <a href="/guias/#dns"
+          >Ver guia de DNS
+          <i data-lucide="arrow-up-right" aria-hidden="true"></i
+        ></a>
+      </details>
+    </main>
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <a
+          href="https://argonauts.com.br/"
+          target="_blank"
+          rel="noopener noreferrer"
+          >Argonauts</a
+        >
+        <nav aria-label="Navegação secundária">
+          <a href="/guias/">Guias</a><a href="/privacidade/">Privacidade</a
+          ><a
+            class="source-link"
+            href="https://github.com/DanielLemmertz/public-ip"
+            aria-label="Código-fonte no GitHub"
+            target="_blank"
+            rel="noopener noreferrer"
+            ><i data-lucide="arrow-up-right" aria-hidden="true"></i
+          ></a>
+        </nav>
+      </div>
+    </footer>
+  </body>
+</html>

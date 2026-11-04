@@ -22,6 +22,7 @@ jobs:
           test -f dist/dns/index.html
           test -f dist/cidr/index.html
           test -f dist/privacidade/index.html
+          test -f dist/guias/index.html
           test -f dist/robots.txt
           test -f dist/sitemap.xml
           test -f dist/llms.txt

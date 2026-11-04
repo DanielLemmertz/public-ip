@@ -28,3 +28,7 @@ O cálculo é realizado totalmente no navegador. O valor digitado não precisa s
 ## Limites
 
 Calcula apenas IPv4. Não decide regras de roteamento, ACLs ou configuração real de equipamentos de rede.
+
+## Interação
+
+Resultados válidos são atualizados durante a digitação. Calcular confirma a entrada. Cada valor pode ser copiado individualmente; "Copiar tudo" reúne os resultados.
