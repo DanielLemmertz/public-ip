@@ -27,3 +27,7 @@ A consulta reflete o resolvedor público usado, não a visão de todos os servid
 ## Fonte de consulta
 
 https://developers.google.com/speed/public-dns/docs/doh/json
+
+## Copiar resultados
+
+Cada registro tem um botão de copiar seu valor. "Copiar tudo" reúne tipo, valor e TTL dos registros retornados.
