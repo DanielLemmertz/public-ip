@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#090e18">
+<title>Calculadora CIDR IPv4 Online: Máscara, Rede e Hosts | Argonauts</title>
+<meta name="description" content="Calcule sub-redes IPv4 por CIDR gratuitamente. Descubra máscara, endereço de rede, broadcast, primeiro e último IP, total de endereços e hosts utilizáveis.">
+<meta name="robots" content="index,follow"><link rel="canonical" href="https://public-ip-dusky.vercel.app/cidr/"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="describedby" type="text/markdown" href="/llms.txt"><link rel="alternate" type="text/markdown" href="/docs/calculadora-cidr.md">
+<meta property="og:type" content="website"><meta property="og:locale" content="pt_BR"><meta property="og:title" content="Calculadora CIDR IPv4 | Argonauts"><meta property="og:description" content="Calcule máscara, rede, broadcast e hosts de uma sub-rede IPv4."><meta property="og:url" content="https://public-ip-dusky.vercel.app/cidr/"><meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="/src/styles.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Calculadora CIDR IPv4","url":"https://public-ip-dusky.vercel.app/cidr/","applicationCategory":"UtilitiesApplication","operatingSystem":"Navegador moderno","inLanguage":"pt-BR","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"BRL"}}</script>
+<script type="module" src="/src/cidr.js"></script>
+</head>
+<body>
+<a class="skip-link" href="#conteudo">Pular para conteúdo</a><header class="site-header"><div class="container header-inner"><a class="brand" href="/" aria-label="Argonauts Network Tools - Início"><span class="brand-mark" aria-hidden="true">◈</span><span>argonauts<span class="brand-divider">/</span><strong>network</strong></span></a><nav class="primary-nav" aria-label="Navegação principal"><a href="/">Meu IP</a><a href="/dns/">Consultar DNS</a><a href="/cidr/" aria-current="page">Calculadora CIDR</a></nav><a class="header-link" href="https://argonauts.com.br/" target="_blank" rel="noopener noreferrer">Argonauts ↗</a></div></header>
+<main id="conteudo">
+<section class="container tool-hero"><div class="eyebrow"><span class="live-dot" aria-hidden="true"></span> NETWORK TOOLS / 02</div><h1>Calculadora <em>CIDR IPv4.</em></h1><p class="hero-description">Calcule a sub-rede de qualquer IPv4. A ferramenta mostra máscara, endereço de rede, broadcast e intervalo de hosts, sem enviar o endereço a um servidor.</p>
+<div class="workspace">
+  <form id="cidr-form" class="form-stack">
+    <div class="form-field"><label for="cidr-value">Endereço IPv4 / prefixo CIDR</label><input id="cidr-value" name="cidr" type="text" autocomplete="off" spellcheck="false" placeholder="192.168.1.10/24" value="192.168.1.10/24" maxlength="21" required><small>Exemplo: 10.0.0.15/24 · Prefixos permitidos: /0 a /32.</small></div>
+    <button class="button button-primary" type="submit">Calcular sub-rede ↗</button>
+  </form>
+  <div class="results" aria-labelledby="cidr-results-heading"><div class="results-header"><h2 id="cidr-results-heading">Resultado</h2><span class="protocol-pill">IPv4</span></div><p role="status" aria-live="polite" class="helper" id="cidr-status">Insira um endereço e clique em calcular.</p><dl class="result-list" id="cidr-list"><div><dt>Rede</dt><dd id="result-network">—</dd></div><div><dt>Máscara</dt><dd id="result-mask">—</dd></div><div><dt>Broadcast</dt><dd id="result-broadcast">—</dd></div><div><dt>Primeiro endereço</dt><dd id="result-first">—</dd></div><div><dt>Último endereço</dt><dd id="result-last">—</dd></div><div><dt>Total de endereços</dt><dd id="result-total">—</dd></div><div><dt>Hosts utilizáveis</dt><dd id="result-usable">—</dd></div></dl></div>
+</div>
+</section>
+<section class="container editorial" aria-labelledby="cidr-explica"><div><span class="label-overline">GUIA RÁPIDO</span><h2 id="cidr-explica">O que é notação CIDR?</h2></div><div class="editorial-body"><p>CIDR (Classless Inter-Domain Routing) indica quantos bits de um endereço IP pertencem ao prefixo de rede. Em 192.168.1.10/24, os primeiros 24 bits identificam a rede.</p><h3>Máscara e broadcast</h3><p>A máscara indica quais bits compõem o prefixo. O endereço de broadcast tradicional representa o último endereço de uma sub-rede IPv4; as redes /31 e /32 têm tratamento específico.</p><h3>Quantos hosts cabem em /24?</h3><p>Uma rede IPv4 /24 contém 256 endereços; normalmente 254 são utilizáveis por hosts, reservando rede e broadcast. Já um enlace ponto a ponto /31 pode usar os dois endereços (RFC 3021).</p><p><a class="inline-link" href="/docs/calculadora-cidr.md">Entenda os cálculos e casos especiais →</a></p></div></section>
+</main>
+<footer class="site-footer"><div class="container footer-inner"><span>© Argonauts · Ferramentas de rede gratuitas</span><div><a href="/">Meu IP</a><a href="/privacidade/">Privacidade</a><a href="/llms.txt">Para IAs</a></div></div></footer>
+</body></html>

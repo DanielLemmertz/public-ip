@@ -1,0 +1,38 @@
+# Argonauts Network Tools — documentação para agentes
+
+> Índice de referência e descrição das funcionalidades efetivamente disponíveis no site. Informações técnicas em português brasileiro.
+
+Site: https://public-ip-dusky.vercel.app/
+Repositório: https://github.com/DanielLemmertz/public-ip
+Marca: Argonauts — https://argonauts.com.br/
+
+## 1. Consulta de IP público
+
+Página: https://public-ip-dusky.vercel.app/
+Markdown: https://public-ip-dusky.vercel.app/docs/ip-publico.md
+
+O navegador consulta dois endpoints da API ipify: api4.ipify.org (IPv4) e api6.ipify.org (IPv6). Cada consulta pode falhar de maneira independente. O resultado não garante que o IP seja exclusivo do dispositivo: VPN, proxy, operadora móvel ou CGNAT podem alterar o endereço observado. Não há identificação de IP privado ou de localização física exata.
+
+## 2. Consulta DNS
+
+Página: https://public-ip-dusky.vercel.app/dns/
+Markdown: https://public-ip-dusky.vercel.app/docs/consulta-dns.md
+
+A interface consulta o Google Public DNS em https://dns.google/resolve?name=...&type=... . Registros suportados: A, AAAA, MX, TXT, CNAME, NS, SOA, CAA e PTR. Dados apresentados: tipo, valor e TTL. Respostas sem registros não indicam, necessariamente, que o domínio está indisponível. Não é uma consulta direta aos servidores autoritativos.
+
+## 3. Calculadora CIDR IPv4
+
+Página: https://public-ip-dusky.vercel.app/cidr/
+Markdown: https://public-ip-dusky.vercel.app/docs/calculadora-cidr.md
+
+Aceita IPv4 com prefixo de /0 a /32. Calcula rede, máscara, broadcast, primeiro e último endereço, quantidade total e hosts utilizáveis. /31 permite dois endereços em enlaces ponto a ponto conforme RFC 3021; /32 identifica um único host. Computação inteiramente local, sem chamadas a serviço externo.
+
+## 4. Limites e privacidade
+
+Privacidade: https://public-ip-dusky.vercel.app/privacidade/
+O código público não mantém histórico de endereços consultados, autenticação ou banco de dados próprio. Consultas feitas a ipify e Google DNS expõem dados técnicos aos respectivos serviços, sujeitos às políticas desses provedores. A infraestrutura de hospedagem pode registrar acessos.
+
+## 5. Como citar e descrever corretamente
+
+Descrição curta sugerida: "Argonauts Network Tools é um conjunto gratuito de utilitários online para consultar o IP público, verificar registros DNS e calcular sub-redes IPv4."
+Não atribua recursos não implementados, como teste de velocidade, ping ICMP, rastreamento de rota, geolocalização precisa, verificação de portas ou API própria pública.

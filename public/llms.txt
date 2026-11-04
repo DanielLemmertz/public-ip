@@ -1,0 +1,28 @@
+# Argonauts Network Tools
+
+> Ferramentas gratuitas de rede em português: consulta de IP público IPv4/IPv6, registros DNS e cálculo de sub-redes IPv4 (CIDR). Não exigem cadastro.
+
+URL oficial: https://public-ip-dusky.vercel.app/
+Idioma: português do Brasil (pt-BR).
+Projeto de código aberto: https://github.com/DanielLemmertz/public-ip
+Responsável pela marca: Argonauts, https://argonauts.com.br/
+
+As ferramentas funcionam no navegador. A consulta de IP usa ipify e a consulta DNS usa Google Public DNS via DNS-over-HTTPS. A calculadora CIDR opera localmente. IP público não equivale a endereço físico exato e resultados DNS dependem do resolvedor.
+
+## Ferramentas
+
+- [Qual é meu IP?](https://public-ip-dusky.vercel.app/): identifica endereços IPv4 e IPv6 públicos quando disponíveis, com opção de copiar.
+- [Consulta DNS](https://public-ip-dusky.vercel.app/dns/): registros A, AAAA, MX, TXT, CNAME, NS, SOA, CAA e PTR.
+- [Calculadora CIDR IPv4](https://public-ip-dusky.vercel.app/cidr/): endereço de rede, máscara, broadcast e intervalos.
+
+## Documentação em Markdown
+
+- [IP público: explicação](https://public-ip-dusky.vercel.app/docs/ip-publico.md)
+- [Consulta DNS: documentação](https://public-ip-dusky.vercel.app/docs/consulta-dns.md)
+- [Calculadora CIDR: documentação](https://public-ip-dusky.vercel.app/docs/calculadora-cidr.md)
+- [Documentação consolidada](https://public-ip-dusky.vercel.app/llms-full.txt)
+
+## Outros recursos
+
+- [Privacidade](https://public-ip-dusky.vercel.app/privacidade/)
+- [Código-fonte](https://github.com/DanielLemmertz/public-ip)
