@@ -11,6 +11,7 @@ import {
   Search,
   ChevronDown,
 } from "lucide";
+import { installMotion } from "./motion.js";
 
 export function icons(root = document) {
   createIcons({
@@ -38,11 +39,14 @@ export async function copyText(value, button, status) {
     await navigator.clipboard.writeText(value);
     clearTimeout(timers.get(button));
     button.classList.add("is-copied");
+    const label = button.querySelector("[data-copy-label]");
+    if (label) label.textContent = "IP copiado";
     status.textContent = "Copiado.";
     timers.set(
       button,
       setTimeout(() => {
         button.classList.remove("is-copied");
+        if (label) label.textContent = button.dataset.copyLabel || "Copiar IP";
         if (status.textContent === "Copiado.") status.textContent = "";
       }, 1800),
     );
@@ -64,3 +68,4 @@ export function copyButton(label, value, status) {
 }
 
 icons();
+installMotion();

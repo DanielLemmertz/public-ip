@@ -13,7 +13,7 @@
     />
     <meta name="robots" content="index,follow" />
     <link rel="canonical" href="https://public-ip-dusky.vercel.app/cidr/" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href="/brands/argonauts.svg" />
     <link rel="describedby" type="text/markdown" href="/llms.txt" />
     <link
       rel="alternate"
@@ -53,8 +53,14 @@
     <header class="site-header">
       <div class="container header-inner">
         <a class="brand" href="/" aria-label="Argonauts Public IP — início"
-          ><i data-lucide="globe-2" aria-hidden="true"></i
-          ><span
+          ><img
+            class="brand-logo"
+            src="/brands/argonauts.svg"
+            width="40"
+            height="38"
+            alt=""
+            decoding="async"
+          /><span
             >argonauts <span class="brand-divider">/</span>
             <strong>Public IP</strong></span
           ></a
@@ -70,86 +76,97 @@
     </header>
     <main id="conteudo" class="container tool-main">
       <h1>Calculadora CIDR</h1>
-      <form id="cidr-form" class="query-form cidr-form">
-        <div class="form-field">
-          <label for="cidr-value">IPv4 / prefixo</label
-          ><input
-            id="cidr-value"
-            name="cidr"
-            type="text"
-            autocomplete="off"
-            autocapitalize="none"
-            spellcheck="false"
-            value="192.168.1.10/24"
-            placeholder="192.168.1.10/24"
-            maxlength="21"
-            aria-describedby="cidr-status"
-            required
-          />
-        </div>
-        <button class="button button-muted" type="submit">
-          Calcular <i data-lucide="arrow-right" aria-hidden="true"></i>
-        </button>
-      </form>
-      <p
-        id="cidr-status"
-        class="status form-status"
-        role="status"
-        aria-live="polite"
-      ></p>
-      <section class="results" aria-labelledby="cidr-results-heading">
-        <div class="results-header">
-          <h2 id="cidr-results-heading">Sub-rede</h2>
-          <button id="copy-cidr" class="text-button copy-button" type="button">
-            <span class="icon-default"
-              ><i data-lucide="copy" aria-hidden="true"></i></span
-            ><span class="icon-success"
-              ><i data-lucide="check" aria-hidden="true"></i></span
-            ><span>Copiar tudo</span>
+      <div class="workspace-card floating-card">
+        <form id="cidr-form" class="query-form cidr-form">
+          <div class="form-field">
+            <label for="cidr-value">IPv4 / prefixo</label
+            ><input
+              id="cidr-value"
+              name="cidr"
+              type="text"
+              autocomplete="off"
+              autocapitalize="none"
+              spellcheck="false"
+              value="192.168.1.10/24"
+              placeholder="192.168.1.10/24"
+              maxlength="21"
+              aria-describedby="cidr-status"
+              required
+            />
+          </div>
+          <button class="button button-muted" type="submit">
+            Calcular <i data-lucide="arrow-right" aria-hidden="true"></i>
           </button>
-        </div>
-        <dl class="result-list" id="cidr-list">
-          <div class="result-row network-result">
-            <dt>Rede</dt>
-            <dd>
-              <span id="result-network">—</span><span id="copy-network"></span>
-            </dd>
+        </form>
+        <p
+          id="cidr-status"
+          class="status form-status"
+          role="status"
+          aria-live="polite"
+        ></p>
+        <section class="results" aria-labelledby="cidr-results-heading">
+          <div class="results-header">
+            <h2 id="cidr-results-heading">Sub-rede</h2>
+            <button
+              id="copy-cidr"
+              class="button button-muted copy-button copy-all"
+              type="button"
+            >
+              <span class="icon-default"
+                ><i data-lucide="copy" aria-hidden="true"></i></span
+              ><span class="icon-success"
+                ><i data-lucide="check" aria-hidden="true"></i></span
+              ><span>Copiar tudo</span>
+            </button>
           </div>
-          <div class="result-row">
-            <dt>Máscara</dt>
-            <dd><span id="result-mask">—</span><span id="copy-mask"></span></dd>
-          </div>
-          <div class="result-row">
-            <dt>Broadcast</dt>
-            <dd>
-              <span id="result-broadcast">—</span
-              ><span id="copy-broadcast"></span>
-            </dd>
-          </div>
-          <div class="result-row">
-            <dt>Primeiro host</dt>
-            <dd>
-              <span id="result-first">—</span><span id="copy-first"></span>
-            </dd>
-          </div>
-          <div class="result-row">
-            <dt>Último host</dt>
-            <dd><span id="result-last">—</span><span id="copy-last"></span></dd>
-          </div>
-          <div class="result-row">
-            <dt>Total de endereços</dt>
-            <dd>
-              <span id="result-total">—</span><span id="copy-total"></span>
-            </dd>
-          </div>
-          <div class="result-row">
-            <dt>Hosts utilizáveis</dt>
-            <dd>
-              <span id="result-usable">—</span><span id="copy-usable"></span>
-            </dd>
-          </div>
-        </dl>
-      </section>
+          <dl class="result-list" id="cidr-list">
+            <div class="result-row network-result">
+              <dt>Rede</dt>
+              <dd>
+                <span id="result-network">—</span
+                ><span id="copy-network"></span>
+              </dd>
+            </div>
+            <div class="result-row">
+              <dt>Máscara</dt>
+              <dd>
+                <span id="result-mask">—</span><span id="copy-mask"></span>
+              </dd>
+            </div>
+            <div class="result-row">
+              <dt>Broadcast</dt>
+              <dd>
+                <span id="result-broadcast">—</span
+                ><span id="copy-broadcast"></span>
+              </dd>
+            </div>
+            <div class="result-row">
+              <dt>Primeiro host</dt>
+              <dd>
+                <span id="result-first">—</span><span id="copy-first"></span>
+              </dd>
+            </div>
+            <div class="result-row">
+              <dt>Último host</dt>
+              <dd>
+                <span id="result-last">—</span><span id="copy-last"></span>
+              </dd>
+            </div>
+            <div class="result-row">
+              <dt>Total de endereços</dt>
+              <dd>
+                <span id="result-total">—</span><span id="copy-total"></span>
+              </dd>
+            </div>
+            <div class="result-row">
+              <dt>Hosts utilizáveis</dt>
+              <dd>
+                <span id="result-usable">—</span><span id="copy-usable"></span>
+              </dd>
+            </div>
+          </dl>
+        </section>
+      </div>
       <details class="tool-help">
         <summary>Entender o resultado</summary>
         <p>
@@ -168,11 +185,20 @@
     </main>
     <footer class="site-footer">
       <div class="container footer-inner">
-        <a
-          href="https://argonauts.com.br/"
-          target="_blank"
-          rel="noopener noreferrer"
-          >Argonauts</a
+        <span class="powered-by"
+          >Powered by
+          <a
+            href="https://argonauts.com.br/"
+            target="_blank"
+            rel="noopener noreferrer"
+            ><img
+              src="/brands/argonauts.svg"
+              width="26"
+              height="25"
+              alt=""
+              decoding="async"
+            /><span>Argonauts Soluções LTDA</span></a
+          ></span
         >
         <nav aria-label="Navegação secundária">
           <a href="/guias/">Guias</a><a href="/privacidade/">Privacidade</a

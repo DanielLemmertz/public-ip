@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@fontsource/poppins": "^5.3.0",
+    "gsap": "^3.15.1",
     "lucide": "^1.68.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",

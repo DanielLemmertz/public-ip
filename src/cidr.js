@@ -1,5 +1,6 @@
 import { calculateCIDR } from "./cidr-core.js";
 import { icons, copyButton, copyText } from "./ui.js";
+import { animateResult } from "./motion.js";
 const input = document.getElementById("cidr-value"),
   status = document.getElementById("cidr-status");
 const labels = {
@@ -24,6 +25,7 @@ function update(report = true) {
       status.textContent = "";
       return;
     }
+    const changed = Boolean(current);
     current = result;
     input.removeAttribute("aria-invalid");
     status.textContent = "";
@@ -45,6 +47,7 @@ function update(report = true) {
     }
     document.getElementById("copy-cidr").disabled = false;
     icons();
+    if (changed) animateResult(document.getElementById("cidr-list"));
   } catch {
     if (!report) return;
     current = null;
@@ -81,4 +84,7 @@ document.getElementById("copy-cidr").addEventListener("click", () => {
     );
 });
 window.addEventListener("pagehide", () => clearTimeout(timer));
+window.addEventListener("pageshow", (event) => {
+  if (event.persisted) update(false);
+});
 update();

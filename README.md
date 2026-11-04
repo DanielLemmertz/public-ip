@@ -16,7 +16,9 @@ Requer Node.js 22 e npm.
 
 Build multi-page com Vite. Diretórios públicos: /, /dns/, /cidr/, /guias/ e /privacidade/. Output: dist.
 
-A Home prioriza o IP, a cópia do protocolo selecionado e os atalhos DNS/CIDR. As consultas de IPv4 e IPv6 são independentes: um resultado pode ser usado sem esperar pelo outro. DNS e CIDR oferecem cópia individual e completa. Entradas CIDR válidas são calculadas durante a digitação. Poppins é servida localmente; os ícones usam apenas os SVGs Lucide importados.
+A Home apresenta o IP em um card flutuante, com botão explícito para copiar o protocolo selecionado e atalhos DNS/CIDR. As consultas de IPv4 e IPv6 são independentes: um resultado pode ser usado sem esperar pelo outro. DNS e CIDR oferecem cópia individual e completa. Entradas CIDR válidas são calculadas durante a digitação.
+
+Poppins é global e servida localmente. O logo oficial Argonauts aparece no favicon, cabeçalho e rodapé “Powered by Argonauts Soluções LTDA”. GSAP coordena a entrada dos cards e textos, os resultados e as transições entre abas. A navegação mantém os documentos HTML e suas URLs; movimento reduzido desativa as animações.
 
 ## SEO e indexação por IA
 

@@ -545,7 +545,7 @@ select {
 }
 .record-value {
   display: block;
-  font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+  font-family: inherit;
   font-size: 13px;
   overflow-wrap: anywhere;
   word-break: break-word;
@@ -861,4 +861,403 @@ select {
 
 .text-button .icon-success {
   left: 0;
+}
+
+/* Floating surfaces and page motion share the existing document navigation. */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse 65% 50% at 50% 35%,
+    #6550b012,
+    transparent 85%
+  );
+}
+.brand-logo {
+  display: block;
+  width: 40px;
+  height: 38px;
+  object-fit: contain;
+}
+.powered-by {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  white-space: nowrap;
+}
+.powered-by a {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: #d7dbe2;
+}
+.powered-by img {
+  display: block;
+  width: 26px;
+  height: 25px;
+  object-fit: contain;
+}
+.footer-inner {
+  min-height: 88px;
+}
+.text-mask {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+}
+.text-word {
+  display: inline-block;
+}
+.floating-card {
+  position: relative;
+  isolation: isolate;
+  border: 1px solid #ffffff16;
+  border-radius: 23px;
+  background: linear-gradient(145deg, #1d222bf0, #14171eef);
+  box-shadow:
+    0 20px 46px #00000046,
+    inset 0 1px 0 #ffffff06;
+}
+.floating-card::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 40% 18px -17px;
+  border-radius: inherit;
+  background: #00000020;
+  filter: blur(18px);
+  transform: translateY(var(--shadow-offset, 0px));
+  pointer-events: none;
+}
+.home-main {
+  align-items: center;
+  gap: 27px;
+  padding-block: 34px 50px;
+}
+.ip-hero {
+  width: min(780px, 100%);
+  padding: 34px 38px 18px;
+}
+.ip-hero h1 {
+  margin-bottom: 8px;
+}
+.ip-result {
+  height: 120px;
+  display: flex;
+}
+.ip-value {
+  max-width: 100%;
+  font-size: clamp(1.65rem, 6vw, 4.5rem);
+}
+.is-ipv6 .ip-value {
+  font-size: clamp(1.125rem, 2.9vw, 1.85rem);
+}
+.ip-controls {
+  margin-bottom: 17px;
+}
+.ip-copy {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 11px;
+  width: min(270px, 100%);
+  height: 54px;
+  padding: 12px 25px;
+  border: 1px solid #a58dff;
+  border-radius: 12px;
+  background: #7957ef;
+  color: #fff;
+  box-shadow: 0 8px 23px #7957ef30;
+  font-size: 14px;
+  font-weight: 600;
+}
+.ip-copy:hover:not(:disabled) {
+  background: #8969fa;
+  border-color: #c0acff;
+  color: #fff;
+}
+.ip-copy:active:not(:disabled) {
+  background: #6845d7;
+}
+.ip-copy:disabled {
+  opacity: 0.45;
+}
+.ip-copy.is-copied {
+  background: #246453;
+  border-color: #69e0ce;
+}
+.ip-copy .icon-success {
+  left: auto;
+  transform: translateX(-51px) scale(0.8);
+  color: #c0fff1;
+}
+.ip-copy.is-copied .icon-success {
+  transform: translateX(-51px) scale(1);
+}
+.ip-copy svg {
+  width: 19px;
+  height: 19px;
+}
+.ip-copy [data-copy-label] {
+  min-width: 90px;
+  text-align: center;
+}
+.ip-hero .status {
+  margin-top: 10px;
+  min-height: 23px;
+}
+.protocol-switch {
+  position: relative;
+  isolation: isolate;
+}
+.protocol-switch::before {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  inset: 3px auto 3px 3px;
+  width: calc(50% - 3px);
+  border-radius: 5px;
+  background: #314139;
+  transform: translateX(
+    calc(var(--protocol-position, var(--protocol-target, 0)) * 100%)
+  );
+}
+.protocol-switch[data-position="1"] {
+  --protocol-target: 1;
+}
+.protocol-switch button {
+  position: relative;
+  z-index: 1;
+}
+.protocol-switch button[aria-pressed="true"] {
+  background: transparent;
+}
+.tool-shortcuts {
+  width: min(780px, 100%);
+}
+.tool-shortcuts a {
+  min-height: 79px;
+  border-radius: 16px;
+  border-color: #ffffff16;
+}
+.tool-shortcuts a:hover {
+  background: #202632;
+  border-color: #ffffff30;
+  box-shadow: 0 24px 48px #0000004f;
+}
+.workspace-card {
+  padding: 30px;
+}
+.tool-main {
+  max-width: 920px;
+  padding-block: 48px 60px;
+}
+.tool-main h1 {
+  margin-bottom: 26px;
+}
+.workspace-card .form-status {
+  margin-bottom: 18px;
+}
+.workspace-card .results-header {
+  min-height: 50px;
+}
+.copy-all {
+  min-height: 38px;
+  padding: 7px 12px;
+  gap: 8px;
+  font-size: 11px;
+}
+.copy-all .icon-success {
+  left: 12px;
+}
+.copy-all svg {
+  width: 14px;
+  height: 14px;
+}
+.tool-help {
+  margin-left: 2px;
+}
+@media (max-width: 700px) {
+  .brand-logo {
+    width: 32px;
+    height: 30px;
+  }
+  .home-main {
+    gap: 17px;
+    padding-block: 16px;
+  }
+  .ip-hero {
+    padding: 21px 20px 8px;
+    border-radius: 20px;
+  }
+  .ip-hero h1 {
+    margin-bottom: 3px;
+    font-size: 10px;
+  }
+  .ip-result {
+    height: 76px;
+  }
+  .ip-value {
+    max-width: 100%;
+    font-size: clamp(1.65rem, 7vw, 2.9rem);
+  }
+  .is-ipv6 .ip-value {
+    font-size: clamp(1rem, 3.3vw, 1.7rem);
+  }
+  .ip-controls {
+    min-height: 40px;
+    margin-bottom: 12px;
+  }
+  .protocol-switch button {
+    min-height: 32px;
+  }
+  .ip-copy {
+    width: min(265px, 100%);
+    height: 49px;
+    min-height: 49px;
+    font-size: 13px;
+  }
+  .ip-copy svg {
+    width: 18px;
+    height: 18px;
+  }
+  .ip-hero .status {
+    min-height: 22px;
+    margin-top: 8px;
+    font-size: 10px;
+  }
+  .tool-shortcuts a {
+    min-height: 65px;
+    padding: 13px;
+    border-radius: 14px;
+  }
+  .footer-inner {
+    flex-direction: column;
+    justify-content: center;
+    gap: 0;
+    min-height: 88px;
+    padding-block: 5px;
+  }
+  .powered-by {
+    min-height: 37px;
+    font-size: 10px;
+    gap: 7px;
+  }
+  .powered-by a {
+    min-height: 37px;
+    gap: 6px;
+  }
+  .powered-by img {
+    width: 24px;
+    height: 23px;
+  }
+  .footer-inner nav a {
+    min-height: 30px;
+  }
+  .workspace-card {
+    padding: 22px 18px;
+    border-radius: 18px;
+  }
+  .tool-main {
+    padding-block: 30px 40px;
+  }
+  .tool-main h1 {
+    margin-bottom: 22px;
+  }
+}
+@media (max-height: 650px) and (min-width: 701px) {
+  .home-main {
+    padding-block: 18px;
+    gap: 18px;
+  }
+  .ip-hero {
+    padding-block: 19px 8px;
+  }
+  .ip-result {
+    height: 78px;
+  }
+  .ip-copy {
+    height: 46px;
+    min-height: 46px;
+  }
+  .ip-controls {
+    margin-bottom: 10px;
+  }
+  .tool-shortcuts a {
+    min-height: 65px;
+  }
+  .footer-inner {
+    min-height: 66px;
+  }
+}
+
+.primary-nav {
+  position: relative;
+  isolation: isolate;
+}
+.primary-nav a {
+  position: relative;
+  z-index: 1;
+}
+.nav-indicator {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  border: 1px solid #ffffff12;
+  border-radius: 8px;
+  background: #ffffff07;
+  pointer-events: none;
+}
+@media (max-height: 500px) and (min-width: 701px) {
+  .home-main {
+    display: grid;
+    grid-template-columns: minmax(0, 1.6fr) minmax(220px, 1fr);
+    align-content: center;
+    gap: 18px;
+    padding-block: 16px;
+  }
+  .ip-hero {
+    padding: 12px 18px 6px;
+  }
+  .ip-hero h1 {
+    margin-bottom: 0;
+    font-size: 9px;
+    line-height: 1.4;
+  }
+  .ip-result {
+    height: 54px;
+  }
+  .ip-value {
+    font-size: clamp(25px, 4.2vw, 42px);
+  }
+  .is-ipv6 .ip-value {
+    font-size: clamp(17px, 2.1vw, 21px);
+  }
+  .ip-controls {
+    min-height: 36px;
+    margin-bottom: 6px;
+  }
+  .protocol-switch button {
+    min-height: 32px;
+  }
+  .ip-copy {
+    min-height: 42px;
+    height: 42px;
+    width: 220px;
+    font-size: 12px;
+  }
+  .ip-hero .status {
+    min-height: 18px;
+    margin-top: 8px;
+    font-size: 10px;
+  }
+  .tool-shortcuts {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    width: 100%;
+  }
 }

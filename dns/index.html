@@ -11,7 +11,7 @@
     />
     <meta name="robots" content="index,follow" />
     <link rel="canonical" href="https://public-ip-dusky.vercel.app/dns/" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href="/brands/argonauts.svg" />
     <link rel="describedby" type="text/markdown" href="/llms.txt" />
     <link rel="alternate" type="text/markdown" href="/docs/consulta-dns.md" />
     <meta property="og:type" content="website" />
@@ -47,8 +47,14 @@
     <header class="site-header">
       <div class="container header-inner">
         <a class="brand" href="/" aria-label="Argonauts Public IP — início"
-          ><i data-lucide="globe-2" aria-hidden="true"></i
-          ><span
+          ><img
+            class="brand-logo"
+            src="/brands/argonauts.svg"
+            width="40"
+            height="38"
+            alt=""
+            decoding="async"
+          /><span
             >argonauts <span class="brand-divider">/</span>
             <strong>Public IP</strong></span
           ></a
@@ -62,86 +68,92 @@
     </header>
     <main id="conteudo" class="container tool-main">
       <h1>Consulta DNS</h1>
-      <form id="dns-form" class="query-form dns-form">
-        <div class="form-field domain-field">
-          <label for="dns-domain">Domínio</label
-          ><input
-            id="dns-domain"
-            name="domain"
-            type="text"
-            inputmode="url"
-            autocomplete="off"
-            autocapitalize="none"
-            spellcheck="false"
-            placeholder="exemplo.com"
-            maxlength="2048"
-            aria-describedby="dns-status"
-            required
-          />
-        </div>
-        <div class="form-field">
-          <label for="dns-type">Registro</label>
-          <div class="select-wrap">
-            <select id="dns-type" name="type">
-              <option>A</option>
-              <option>AAAA</option>
-              <option>MX</option>
-              <option>TXT</option>
-              <option>CNAME</option>
-              <option>NS</option>
-              <option>SOA</option>
-              <option>CAA</option>
-              <option>PTR</option></select
-            ><i data-lucide="chevron-down" aria-hidden="true"></i>
+      <div class="workspace-card floating-card">
+        <form id="dns-form" class="query-form dns-form">
+          <div class="form-field domain-field">
+            <label for="dns-domain">Domínio</label
+            ><input
+              id="dns-domain"
+              name="domain"
+              type="text"
+              inputmode="url"
+              autocomplete="off"
+              autocapitalize="none"
+              spellcheck="false"
+              placeholder="exemplo.com"
+              maxlength="2048"
+              aria-describedby="dns-status"
+              required
+            />
           </div>
-        </div>
-        <button id="dns-submit" class="button button-primary" type="submit">
-          <i data-lucide="search" aria-hidden="true"></i>Consultar
-        </button>
-      </form>
-      <p
-        id="dns-status"
-        class="status form-status"
-        role="status"
-        aria-live="polite"
-      ></p>
-      <section
-        id="dns-results"
-        class="results"
-        aria-labelledby="dns-results-heading"
-        hidden
-      >
-        <div class="results-header">
-          <h2 id="dns-results-heading">
-            Registros <span id="dns-count" class="result-count"></span>
-          </h2>
-          <button id="copy-dns" class="text-button copy-button" type="button">
-            <span class="icon-default"
-              ><i data-lucide="copy" aria-hidden="true"></i></span
-            ><span class="icon-success"
-              ><i data-lucide="check" aria-hidden="true"></i></span
-            ><span>Copiar tudo</span>
+          <div class="form-field">
+            <label for="dns-type">Registro</label>
+            <div class="select-wrap">
+              <select id="dns-type" name="type">
+                <option>A</option>
+                <option>AAAA</option>
+                <option>MX</option>
+                <option>TXT</option>
+                <option>CNAME</option>
+                <option>NS</option>
+                <option>SOA</option>
+                <option>CAA</option>
+                <option>PTR</option></select
+              ><i data-lucide="chevron-down" aria-hidden="true"></i>
+            </div>
+          </div>
+          <button id="dns-submit" class="button button-primary" type="submit">
+            <i data-lucide="search" aria-hidden="true"></i>Consultar
           </button>
-        </div>
-        <table class="data-table">
-          <caption class="sr-only">
-            Registros DNS retornados, valores e tempo de cache
-          </caption>
-          <colgroup>
-            <col class="type-column" />
-            <col />
-            <col class="action-column" />
-          </colgroup>
-          <thead>
-            <tr>
-              <th scope="col">Tipo</th>
-              <th scope="col">Valor</th>
-              <th scope="col"><span class="sr-only">Copiar</span></th>
-            </tr>
-          </thead>
-          <tbody id="dns-rows"></tbody>
-        </table>
-      </section>
+        </form>
+        <p
+          id="dns-status"
+          class="status form-status"
+          role="status"
+          aria-live="polite"
+        ></p>
+        <section
+          id="dns-results"
+          class="results"
+          aria-labelledby="dns-results-heading"
+          hidden
+        >
+          <div class="results-header">
+            <h2 id="dns-results-heading">
+              Registros <span id="dns-count" class="result-count"></span>
+            </h2>
+            <button
+              id="copy-dns"
+              class="button button-muted copy-button copy-all"
+              type="button"
+            >
+              <span class="icon-default"
+                ><i data-lucide="copy" aria-hidden="true"></i></span
+              ><span class="icon-success"
+                ><i data-lucide="check" aria-hidden="true"></i></span
+              ><span>Copiar tudo</span>
+            </button>
+          </div>
+          <table class="data-table">
+            <caption class="sr-only">
+              Registros DNS retornados, valores e tempo de cache
+            </caption>
+            <colgroup>
+              <col class="type-column" />
+              <col />
+              <col class="action-column" />
+            </colgroup>
+            <thead>
+              <tr>
+                <th scope="col">Tipo</th>
+                <th scope="col">Valor</th>
+                <th scope="col"><span class="sr-only">Copiar</span></th>
+              </tr>
+            </thead>
+            <tbody id="dns-rows"></tbody>
+          </table>
+        </section>
+      </div>
       <details class="tool-help">
         <summary>Sobre os registros DNS</summary>
         <p>
@@ -161,11 +173,20 @@
     </main>
     <footer class="site-footer">
       <div class="container footer-inner">
-        <a
-          href="https://argonauts.com.br/"
-          target="_blank"
-          rel="noopener noreferrer"
-          >Argonauts</a
+        <span class="powered-by"
+          >Powered by
+          <a
+            href="https://argonauts.com.br/"
+            target="_blank"
+            rel="noopener noreferrer"
+            ><img
+              src="/brands/argonauts.svg"
+              width="26"
+              height="25"
+              alt=""
+              decoding="async"
+            /><span>Argonauts Soluções LTDA</span></a
+          ></span
         >
         <nav aria-label="Navegação secundária">
           <a href="/guias/">Guias</a><a href="/privacidade/">Privacidade</a

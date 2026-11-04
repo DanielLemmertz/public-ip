@@ -1,5 +1,6 @@
 import { icons, copyButton, copyText } from "./ui.js";
 import { normalizeDomain, recordTypes } from "./dns-core.js";
+import { revealResults } from "./motion.js";
 const $ = (id) => document.getElementById(id);
 let active,
   records = [];
@@ -87,6 +88,7 @@ $("dns-form").addEventListener("submit", async (event) => {
       ? ""
       : `Nenhum registro ${type} encontrado.`;
     $("dns-results").hidden = !records.length;
+    if (records.length) revealResults($("dns-results"));
   } catch (error) {
     if (!controller.signal.aborted)
       $("dns-status").textContent =
@@ -115,3 +117,10 @@ $("copy-dns").addEventListener("click", () =>
   ),
 );
 window.addEventListener("pagehide", () => active?.abort());
+window.addEventListener("pageshow", (event) => {
+  if (!event.persisted) return;
+  if ($("dns-submit").hasAttribute("aria-busy"))
+    $("dns-status").textContent = "";
+  $("dns-submit").disabled = false;
+  $("dns-submit").removeAttribute("aria-busy");
+});

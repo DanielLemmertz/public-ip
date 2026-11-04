@@ -1,5 +1,6 @@
 import { copyText } from "./ui.js";
 import { isIPAddress } from "./ip-core.js";
+import { animateResult, animateProtocol } from "./motion.js";
 const $ = (id) => document.getElementById(id);
 const endpoints = {
   ipv4: "https://api4.ipify.org?format=json",
@@ -16,6 +17,7 @@ function render() {
   $("ip-result").classList.toggle("is-ipv6", selected === "ipv6");
   $("ip-result").classList.toggle("is-loading", !ip && pending);
   const output = $("primary-ip");
+  const previous = output.textContent;
   if (selected === "ipv6" && ip) {
     output.replaceChildren();
     const parts = ip.split(":");
@@ -27,17 +29,23 @@ function render() {
         output.append(document.createElement("wbr"));
     });
   } else output.textContent = ip || "—";
+  if (ip && previous !== ip) animateResult(output);
   $("copy-ip").disabled = !ip;
   $("copy-ip").setAttribute(
     "aria-label",
     selected ? `Copiar ${selected === "ipv4" ? "IPv4" : "IPv6"}` : "Copiar IP",
   );
   $("copy-ip").title = $("copy-ip").getAttribute("aria-label");
+  $("copy-ip").dataset.copyLabel = $("copy-ip").title;
+  if (!$("copy-ip").classList.contains("is-copied"))
+    $("copy-ip").querySelector("[data-copy-label]").textContent =
+      $("copy-ip").title;
   $("protocol-switch").hidden = available.length < 2;
   $("protocol-single").hidden = available.length !== 1;
   $("protocol-single").textContent = selected === "ipv4" ? "IPv4" : "IPv6";
   for (const key of ["ipv4", "ipv6"])
     $("select-" + key).setAttribute("aria-pressed", String(selected === key));
+  animateProtocol($("protocol-switch"), selected === "ipv6" ? 1 : 0);
   $("refresh-ip").disabled = pending;
   $("refresh-ip").classList.toggle("is-loading", pending);
   $("refresh-ip").setAttribute("aria-busy", String(pending));
@@ -92,4 +100,7 @@ for (const key of ["ipv4", "ipv6"])
   });
 $("refresh-ip").addEventListener("click", refresh);
 window.addEventListener("pagehide", () => active?.abort());
+window.addEventListener("pageshow", (event) => {
+  if (event.persisted) refresh();
+});
 refresh();

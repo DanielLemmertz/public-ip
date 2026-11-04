@@ -13,7 +13,7 @@
       Qual é meu IP? Descubra seu IP público IPv4 e IPv6 | Argonauts
     </title>
     <link rel="canonical" href="https://public-ip-dusky.vercel.app/" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href="/brands/argonauts.svg" />
     <link rel="describedby" type="text/markdown" href="/llms.txt" />
     <link rel="alternate" type="text/markdown" href="/docs/ip-publico.md" />
     <meta property="og:type" content="website" />
@@ -68,8 +68,14 @@
     <header class="site-header">
       <div class="container header-inner">
         <a class="brand" href="/" aria-label="Argonauts Public IP — início"
-          ><i data-lucide="globe-2" aria-hidden="true"></i
-          ><span
+          ><img
+            class="brand-logo"
+            src="/brands/argonauts.svg"
+            width="40"
+            height="38"
+            alt=""
+            decoding="async"
+          /><span
             >argonauts <span class="brand-divider">/</span>
             <strong>Public IP</strong></span
           ></a
@@ -82,24 +88,10 @@
       </div>
     </header>
     <main id="conteudo" class="container home-main">
-      <section class="ip-hero" aria-labelledby="ip-heading">
+      <section class="ip-hero floating-card" aria-labelledby="ip-heading">
         <h1 id="ip-heading">Seu IP público</h1>
         <div id="ip-result" class="ip-result is-loading">
           <output id="primary-ip" class="ip-value" aria-live="polite">—</output>
-          <button
-            id="copy-ip"
-            type="button"
-            class="icon-button copy-button ip-copy"
-            aria-label="Copiar IP"
-            title="Copiar IP"
-            disabled
-          >
-            <span class="icon-default"
-              ><i data-lucide="copy" aria-hidden="true"></i></span
-            ><span class="icon-success"
-              ><i data-lucide="check" aria-hidden="true"></i
-            ></span>
-          </button>
         </div>
         <div class="ip-controls">
           <div
@@ -125,6 +117,21 @@
             ><span>Atualizar</span>
           </button>
         </div>
+        <button
+          id="copy-ip"
+          type="button"
+          class="button button-copy copy-button ip-copy"
+          aria-label="Copiar IP"
+          title="Copiar IP"
+          disabled
+        >
+          <span class="icon-default"
+            ><i data-lucide="copy" aria-hidden="true"></i></span
+          ><span class="icon-success"
+            ><i data-lucide="check" aria-hidden="true"></i
+          ></span>
+          <span data-copy-label>Copiar IP</span>
+        </button>
         <p id="ip-feedback" class="status" role="status" aria-live="polite"></p>
         <noscript
           ><p class="status">
@@ -133,12 +140,12 @@
         >
       </section>
       <nav class="tool-shortcuts" aria-label="Outras ferramentas">
-        <a href="/dns/"
+        <a class="floating-card" href="/dns/"
           ><i data-lucide="network" aria-hidden="true"></i
           ><span>Consulta DNS</span
           ><i data-lucide="arrow-up-right" aria-hidden="true"></i
         ></a>
-        <a href="/cidr/"
+        <a class="floating-card" href="/cidr/"
           ><i data-lucide="calculator" aria-hidden="true"></i
           ><span>Calculadora CIDR</span
           ><i data-lucide="arrow-up-right" aria-hidden="true"></i
@@ -147,11 +154,20 @@
     </main>
     <footer class="site-footer">
       <div class="container footer-inner">
-        <a
-          href="https://argonauts.com.br/"
-          target="_blank"
-          rel="noopener noreferrer"
-          >Argonauts</a
+        <span class="powered-by"
+          >Powered by
+          <a
+            href="https://argonauts.com.br/"
+            target="_blank"
+            rel="noopener noreferrer"
+            ><img
+              src="/brands/argonauts.svg"
+              width="26"
+              height="25"
+              alt=""
+              decoding="async"
+            /><span>Argonauts Soluções LTDA</span></a
+          ></span
         >
         <nav aria-label="Navegação secundária">
           <a href="/guias/">Guias</a><a href="/privacidade/">Privacidade</a

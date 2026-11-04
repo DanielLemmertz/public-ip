@@ -164,13 +164,23 @@ test("desktop and mobile fit IPv4, complete IPv6, DNS and CIDR, with no accessib
     [390, 844],
     [768, 1024],
     [1440, 900],
+    [844, 390],
   ]) {
     await page.setViewportSize({ width, height });
     await page.goto("/");
     await page.evaluate(() => document.fonts.ready);
+    await expect(page.locator("html")).toHaveAttribute(
+      "data-motion-state",
+      "idle",
+    );
     await expect(page.locator("#primary-ip")).toHaveText(ipv4);
     for (const protocol of ["IPv4", "IPv6"]) {
       await page.getByRole("button", { name: protocol, exact: true }).click();
+      await expect(page.locator("#protocol-switch")).toHaveCSS(
+        "--protocol-position",
+        protocol === "IPv6" ? "1" : "0",
+      );
+      await expect(page.locator("#primary-ip")).toHaveCSS("opacity", "1");
       await expect(page.locator("#copy-ip")).toBeInViewport({ ratio: 1 });
       await expect(page.locator(".tool-shortcuts")).toBeInViewport({
         ratio: 1,
@@ -189,12 +199,20 @@ test("desktop and mobile fit IPv4, complete IPv6, DNS and CIDR, with no accessib
     }
     for (const tool of ["dns", "cidr"]) {
       await page.goto(`/${tool}/`);
+      await expect(page.locator("html")).toHaveAttribute(
+        "data-motion-state",
+        "idle",
+      );
       if (tool === "dns") {
         await page.getByLabel("Domínio", { exact: true }).fill("example.org");
         await page
           .getByRole("button", { name: "Consultar", exact: true })
           .click();
         await expect(page.locator("#dns-results")).toBeVisible();
+        await expect(page.locator("#dns-rows tr").last()).toHaveCSS(
+          "opacity",
+          "1",
+        );
       } else
         await expect(page.locator("#result-network")).toHaveText(
           "192.168.1.0/24",
